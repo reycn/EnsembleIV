@@ -40,3 +40,4 @@ vignettes/*.pdf
 
 # ipython notebook checkpoints
 .ipynb_checkpoints
+.vscode/settings.json
