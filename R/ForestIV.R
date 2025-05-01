@@ -93,10 +93,10 @@ ForestIV = function(data_test, data_unlabel, control, method, iterative = TRUE, 
   doParallel::registerDoParallel(numCores) # use multicore, set to the number of our cores
   result <- foreach::foreach(i = 1:ntree, .packages = c("AER", "OneSampleMR", "stats")) %dopar% {
     run_per_tree(data_test, data_unlabel, control, method, iterative, ntree, model_unbias, family, diagnostic, select_method, i)
-  })
+  }
   print(paste0("Parallel executing... Number of cores: ", length(numCores)))
   result = do.call(rbind.data.frame, result)
-  print(paste0("Parallel execution complete. Number of results: ", length(result))
+  print(paste0("Parallel execution complete. Number of results: ", length(result)))
 
   # Handle cases where no results were generated
   if (is.null(result) || nrow(result) == 0) {
