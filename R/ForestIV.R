@@ -94,7 +94,7 @@ ForestIV = function(data_test, data_unlabel, control, method, iterative = TRUE, 
   result <- foreach::foreach(i = 1:ntree, .packages = c("AER", "OneSampleMR", "stats")) %dopar% {
     run_per_tree(data_test, data_unlabel, control, method, iterative, ntree, model_unbias, family, diagnostic, select_method, i)
   }
-  print(paste0("Parallel executing... Number of cores: ", length(numCores)))
+  print(paste0("Parallel executing... Number of cores: ", numCores))
   result = do.call(rbind.data.frame, result)
   print(paste0("Parallel execution complete. Number of results: ", length(result)))
 
